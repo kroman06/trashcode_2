@@ -25,18 +25,20 @@ class TransactionAnalyzerTest {
     void testCalculateTotalBalance() {
         double expectedBalance = 170.0;
         double actualBalance = TransactionAnalyzer.calculateTotalBalance(testTransactions);
-        Assertions.assertEquals(expectedBalance, actualBalance, "Розрахунок загального балансу неправильний");
+        Assertions.assertEquals(expectedBalance, actualBalance, "Incorrect total balance calculation");
     }
 
     @Test
     void testCountTransactionsByMonth() {
-        int expectedFebCount = 3;
-        int actualFebCount = TransactionAnalyzer.countTransactionsByMonth(testTransactions, "02-2023");
-        Assertions.assertEquals(expectedFebCount, actualFebCount, "Кількість транзакцій за лютий неправильна");
+        String month = "02-2023";
+        int expectedFebruaryCount = 3;
+        int actualFebCount = TransactionAnalyzer.countTransactionsByMonth(testTransactions, month);
+        Assertions.assertEquals(expectedFebruaryCount, actualFebCount, "Invalid txn count for month " + month);
 
-        int expectedMarCount = 1;
-        int actualMarCount = TransactionAnalyzer.countTransactionsByMonth(testTransactions, "03-2023");
-        Assertions.assertEquals(expectedMarCount, actualMarCount, "Кількість транзакцій за березень неправильна");
+        String month2 = "02-2023";
+        int expectedMarchCount = 1;
+        int actualMarCount = TransactionAnalyzer.countTransactionsByMonth(testTransactions, month2);
+        Assertions.assertEquals(expectedMarchCount, actualMarCount, "Invalid txn count for month " + month2);
     }
 
     @Test
