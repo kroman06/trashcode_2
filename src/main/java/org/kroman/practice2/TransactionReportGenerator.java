@@ -3,8 +3,7 @@ package org.kroman.practice2;
 import java.util.List;
 
 public abstract class TransactionReportGenerator {
-
-    private TransactionReportGenerator() {}
+    private static final double VISUALIZATION_UNIT = -1000.0; // 1k = *
 
     public static void printBalanceReport(double totalBalance) {
         System.out.println("Total balance: " + totalBalance);
@@ -34,14 +33,11 @@ public abstract class TransactionReportGenerator {
         System.out.println("\n=== Expense category summary ===");
         categorySummary.entrySet().stream()
                 .sorted(java.util.Map.Entry.comparingByValue())
-                .forEach(entry -> {
-                    System.out.printf("Category: %-20s | Amount: %.2f%n", entry.getKey(), entry.getValue());
-                });
+                .forEach(entry -> System.out.printf("Category: %-20s | Amount: %.2f%n", entry.getKey(), entry.getValue()));
     }
 
     public static void printMonthlyExpenseSummary(java.util.Map<String, Double> monthlySummary) {
         System.out.println("\n=== Monthly expenses report ===");
-        final double VISUALIZATION_UNIT = -1000.0; // 1k = *
 
         monthlySummary.entrySet().stream()
                 .sorted(java.util.Map.Entry.comparingByKey())
